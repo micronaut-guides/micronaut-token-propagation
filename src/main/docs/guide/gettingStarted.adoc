@@ -7,6 +7,6 @@ The next diagram illustrates the flow:
 
 image::tokenpropagation.svg[]
 
-We generate valid JWT in the gateway microservice. Then every microservice in our app is able to validate those JWT. We want every internal request to contain a valida JWT token. If we want to talk to another microservice we need to propagate the valid JWT get received.
+We generate valid JWT in the gateway microservice. Then every microservice in our app is able to validate those JWT. We want every internal request to contain a valid JWT token. If we want to talk to another microservice we need to propagate the valid JWT get received.
 
 include::{commondir}/common-annotationprocessors.adoc[]
