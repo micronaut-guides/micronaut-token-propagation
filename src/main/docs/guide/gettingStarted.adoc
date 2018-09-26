@@ -1,0 +1,12 @@
+Lets describe the microservices you are going to build through the tutorial.
+
+* `gateway` - A secured via JWT microservice which exposes an endpoint `/user`. The output of that endpoint is the result of consuming the `userecho` endpoint.
+* `userecho` - A secured via JWT microservice which exposes an endpoint `/user` which responds the username of the authenticated user.
+
+The next diagram illustrates the flow:
+
+image::tokenpropagation.svg[]
+
+We generate valid JWT in the gateway microservice. Then every microservice in our app is able to validate those JWT. We want every internal request to contain a valida JWT token. If we want to talk to another microservice we need to propagate the valid JWT get received.
+
+include::{commondir}/common-annotationprocessors.adoc[]

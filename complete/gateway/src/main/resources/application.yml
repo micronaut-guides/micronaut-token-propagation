@@ -1,0 +1,34 @@
+#tag::security[]
+micronaut:
+    application:
+        name: gateway
+    server:
+        port: 8080
+    security:
+        enabled: true
+        endpoints:
+            login:
+                enabled: true
+            oauth:
+                enabled: true
+        token:
+            jwt:
+                enabled: true
+                signatures:
+                    secret:
+                        generator:
+                            secret: pleaseChangeThisSecretForANewOne
+#tag::tokenpropagation[]
+            writer:
+                header:
+                    enabled: true # <1>
+            propagation:
+                enabled: true # <2>
+                serviceIdRegex: "userecho"
+#end::tokenpropagation[]
+    http:
+        services:
+            userecho:
+                urls:
+                - "http://localhost:8081"
+#end::security[]

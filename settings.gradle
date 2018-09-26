@@ -1,0 +1,6 @@
+include 'intermediate/userecho'
+include 'intermediate/gateway'
+include 'intermediate/acceptancetest'
+include 'complete/userecho'
+include 'complete/gateway'
+include 'complete/acceptancetest'

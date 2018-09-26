@@ -1,0 +1,59 @@
+As you can see propagating of the JWT token to other microservices in our app complicates the code.
+We need to capture the `Authorization` header in the controller method arguments and then pass it to the `@Client` bean.
+In an app with several controllers and declarative clients, it can lead to a lot of repetition. Fortunately, Micronaut
+includes a feature called token propagation. We can tell our app to propagate the incoming token to a set of outgoing requests.
+
+Let's configure token propagation. We need to modify `application.yml` in the `gateway` microservice:
+
+[source,yaml]
+.gateway/src/main/resources/application.yml
+----
+micronaut:
+    security:
+        token:
+    ...
+    ..
+    ..
+include::{sourceDir}/gateway/src/main/resources/application.yml[tag=tokenpropagation]
+....
+..
+----
+
+<1> Micronaut ships with several https://docs.micronaut.io/snapshot/api/io/micronaut/security/token/writer/TokenWriter.html[TokenWriter] beans which you can enable. In this example, we enable the HTTP header token writer which propagates the token in the HTTP Header `Authorization`. You can code your own `TokenWriter` to satisfy your requirements.
+<2> Enable token propagation
+<3> We only want to propagate the token to certain services. We can create a regular expression to match those services ids.
+
+We can simplify the code:
+
+Edit `UserController.java` and remove the `@Header` parameter:
+
+[source,java]
+.gateway/src/main/java/example/micronaut/UserController.java
+----
+include::{sourceDir}/gateway/src/main/java/example/micronaut/UserController.java[]
+----
+
+Edit `UsernameFetcher.java` and remove the `@Header` parameter:
+
+[source,java]
+.gateway/src/main/java/example/micronaut/UsernameFetcher.java
+----
+include::{sourceDir}/gateway/src/main/java/example/micronaut/UsernameFetcher.java[]
+----
+
+Edit `UserEchoClient.java` and remove the `@Header` parameter:
+
+[source,java]
+.gateway/src/main/java/example/micronaut/UserEchoClient.java
+----
+include::{sourceDir}/gateway/src/main/java/example/micronaut/UserEchoClient.java[]
+----
+
+Edit `UserEchoClientReplacement.java` and remove the `@Header` parameter:
+
+[source,java]
+.gateway/src/test/java/example/micronaut/UserEchoClientReplacement.java
+----
+include::{sourceDir}/gateway/src/test/java/example/micronaut/UserEchoClientReplacement.java[]
+----
+

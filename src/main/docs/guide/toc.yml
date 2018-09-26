@@ -1,0 +1,15 @@
+gettingStarted: 
+  title: Getting Started
+  requirements: What you will need
+  solution: Solution
+usingSnapshotVersion:
+  title: Using Snapshot Version
+writingTheApp:
+  title: Writing the App
+  intermediateGateway: Gateway
+  intermediateUserecho: User Echo
+  tokenPropagation: Token Propagation
+runningTheApp:
+  title: Running the App
+nextSteps:
+  title: Next Steps
