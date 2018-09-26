@@ -3,7 +3,7 @@ apply plugin: "groovy"
 repositories {
     mavenLocal()
     jcenter()
-    //maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
 }
 
 dependencies {
