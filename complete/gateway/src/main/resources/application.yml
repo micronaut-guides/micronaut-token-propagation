@@ -24,7 +24,7 @@ micronaut:
                     enabled: true # <1>
             propagation:
                 enabled: true # <2>
-                service-id-regex: "userecho"
+                service-id-regex: "userecho" # <3>
 #end::tokenpropagation[]
     http:
         services:

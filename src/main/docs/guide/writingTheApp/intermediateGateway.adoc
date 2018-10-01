@@ -26,7 +26,7 @@ include::{sourceDir}/../intermediate/gateway/src/main/java/example/micronaut/Use
 <3> Annotate with `io.micronaut.security.Secured` to configure secured access. The `isAuthenticated()` expression will allow access only to authenticated users.
 <4> Since we return a string which is not valid JSON, set the media type to `text/plain`.
 <5> You can specify the HTTP verb that a controller's action responds to. To respond to a GET request, use the `io.micronaut.http.annotation.Get` annotation.
-<5> You can bind an Http Header to a controller method argument.
+<6> You can bind an Http Header to a controller method argument.
 
 Create an interface to encapsulate the collaboration with the `userecho` microservice.
 
