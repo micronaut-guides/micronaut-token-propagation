@@ -1,4 +1,7 @@
-apply plugin: "groovy"
+plugins {
+  id "io.spring.dependency-management" version "1.0.6.RELEASE"
+  id 'groovy'
+}
 
 repositories {
     mavenLocal()
@@ -6,13 +9,18 @@ repositories {
     maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
 }
 
+dependencyManagement {
+    imports {
+        mavenBom "io.micronaut:micronaut-bom:$micronautVersion"
+    }
+}
+
 dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.5.1'
     testCompile 'org.spockframework:spock-core:1.2-groovy-2.5'
 
-    testCompile "io.micronaut:micronaut-runtime-groovy:$micronautVersion"
-    testCompile "io.micronaut:micronaut-http-client:$micronautVersion"
+    testCompile "io.micronaut:micronaut-runtime-groovy"
+    testCompile "io.micronaut:micronaut-http-client"
 
-    testCompile "io.micronaut:micronaut-security-jwt:$micronautVersion"
-
+    testCompile "io.micronaut:micronaut-security-jwt"
 }
