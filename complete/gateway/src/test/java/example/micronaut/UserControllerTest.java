@@ -1,53 +1,34 @@
 package example.micronaut;
 
-import io.micronaut.context.ApplicationContext;
 import io.micronaut.http.HttpRequest;
 import io.micronaut.http.HttpStatus;
-import io.micronaut.http.client.HttpClient;
+import io.micronaut.http.client.RxHttpClient;
+import io.micronaut.http.client.annotation.Client;
 import io.micronaut.http.client.exceptions.HttpClientResponseException;
-import io.micronaut.runtime.server.EmbeddedServer;
 import io.micronaut.security.authentication.UsernamePasswordCredentials;
 import io.micronaut.security.token.jwt.render.BearerAccessRefreshToken;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
+import io.micronaut.test.annotation.MicronautTest;
+import org.junit.jupiter.api.Test;
 
-import static org.hamcrest.Matchers.hasProperty;
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertEquals;
+import javax.inject.Inject;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+@MicronautTest
 public class UserControllerTest {
-    private static EmbeddedServer server;
-    private static HttpClient client;
 
-    @BeforeClass
-    public static void setupServer() {
-        server = ApplicationContext.run(EmbeddedServer.class);
-        client = server
-                .getApplicationContext()
-                .createBean(HttpClient.class, server.getURL());
-    }
-
-    @AfterClass
-    public static void stopServer() {
-        if (server != null) {
-            server.stop();
-        }
-        if (client != null) {
-            client.stop();
-        }
-    }
-
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
+    @Inject
+    @Client("/")
+    RxHttpClient client;
 
     @Test
     public void testUserEndpointIsSecured() {
-        thrown.expect(HttpClientResponseException.class);
-        thrown.expect(hasProperty("response", hasProperty("status", is(HttpStatus.UNAUTHORIZED))));
-        client.toBlocking().exchange(HttpRequest.GET("/user"));
+        HttpClientResponseException thrown = assertThrows(HttpClientResponseException.class, () -> {
+            client.toBlocking().exchange(HttpRequest.GET("/user"));
+        });
+
+        assertEquals(HttpStatus.UNAUTHORIZED, thrown.getResponse().getStatus());
     }
 
     @Test
