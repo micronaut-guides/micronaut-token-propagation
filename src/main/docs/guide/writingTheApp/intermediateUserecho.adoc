@@ -2,6 +2,14 @@ Create the microservice:
 
 `mn create-app example.micronaut.userecho`
 
+Add the security-jwt module to the configuration:
+
+[source,groovy]
+.build.gradle
+----
+include::{sourceDir}/../intermediate/userecho/build.gradle[tag=security-jwt,indent=0]
+----
+
 Create a class `UserController` which exposes `/user` endpoint.
 
 [source,java]

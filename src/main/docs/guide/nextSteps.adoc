@@ -1,1 +1,2 @@
-Read more about https://docs.micronaut.io/snapshot/guide/index.html#tokenPropagation[Token Propagation] and https://docs.micronaut.io/snapshot/guide/index.html#security[Security] inside Micronaut.
+Read more about https://micronaut-projects.github.io/micronaut-security/latest/guide/index.html#tokenPropagation[Token Propagation]
+and https://docs.micronaut.io/latest/guide/index.html#security[Security] inside Micronaut.

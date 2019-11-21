@@ -2,6 +2,14 @@ Create the microservice:
 
 `mn create-app example.micronaut.gateway`
 
+Add the security-jwt module to the configuration:
+
+[source,groovy]
+.build.gradle
+----
+include::{sourceDir}/../intermediate/gateway/build.gradle[tag=security-jwt,indent=0]
+----
+
 To keep this guide simple, create a naive AuthenticationProvider to simulate user’s authentication.
 
 [source,java]
@@ -85,6 +93,6 @@ Create a tests which verifies the app is secured and we can access it after logi
 include::{sourceDir}/../intermediate/gateway/src/test/java/example/micronaut/UserControllerTest.java[]
 ----
 
-<1> To run the application from a unit test you can use the http://docs.micronaut.io/snapshot/api/io/micronaut/runtime/server/EmbeddedServer.html[EmbeddedServer] interface.
-<2> Register a `RxClient` bean in the application context and point it to the embedded server URL. The `EmbeddedServer` interface provides the URL of the server under test which runs on a random port.
+<1> Annotate the class with `@MicronautTest` to let Micronaut starts the embedded server and inject the beans. More info: https://micronaut-projects.github.io/micronaut-test/latest/guide/index.html[https://micronaut-projects.github.io/micronaut-test/latest/guide/index.html].
+<2> Inject the `RxHttpClient` bean in the application context.
 <3> Test endpoint is secured
