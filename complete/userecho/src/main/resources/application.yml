@@ -1,16 +1,16 @@
 #tag::security[]
 micronaut:
-    application:
-        name: userecho
-    server:
-        port: 8081
-    security:
+  application:
+    name: userecho
+  server:
+    port: 8081
+  security:
+    enabled: true
+    token:
+      jwt:
         enabled: true
-        token:
-            jwt:
-                enabled: true
-                signatures:
-                    secret:
-                        validation:
-                            secret: pleaseChangeThisSecretForANewOne
+        signatures:
+          secret:
+            validation:
+              secret: pleaseChangeThisSecretForANewOne
 #end::security[]
