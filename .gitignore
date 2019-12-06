@@ -3,3 +3,5 @@
 .gradle
 build
 *.iml
+/complete/gateway/gateway
+/complete/userecho/userecho
