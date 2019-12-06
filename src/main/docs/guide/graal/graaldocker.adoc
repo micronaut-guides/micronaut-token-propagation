@@ -1,0 +1,42 @@
+Alternatively, you can use Docker to construct the GraalVM Native Image.
+
+## Changes to gateway to generate a GraalVM native image with Docker
+
+Replace `gateway/Dockerfile` with this content:
+
+[source, bash]
+----
+include::{sourceDir}/gateway/Dockerfile[]
+----
+
+Add a script `docker-build.sh to run it:
+
+[source, bash]
+----
+include::{sourceDir}/gateway/docker-build.sh[]
+----
+
+## Changes to userecho to generate a GraalVM native image with Docker
+
+Replace `userecho/Dockerfile` with this content:
+
+[source, bash]
+----
+include::{sourceDir}/userecho/Dockerfile[]
+----
+
+Add a script `docker-build.sh to run it:
+
+[source, bash]
+----
+include::{sourceDir}/userecho/docker-build.sh[]
+----
+
+You can use docker to run the images:
+
+[source, bash]
+----
+$ docker run -p 8080:8080 gateway
+$ docker run -p 8081:8081 userecho
+----
+

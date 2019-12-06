@@ -1,0 +1,34 @@
+Execute gateway native image:
+
+[source,bash]
+----
+ ./gateway
+15:05:06.684 [main] INFO  io.micronaut.runtime.Micronaut - Startup completed in 26ms. Server Running: http://localhost:8080
+----
+
+Execute userecho native image:
+
+[source,bash]
+----
+ ./userecho
+15:06:25.364 [main] INFO  io.micronaut.runtime.Micronaut - Startup completed in 24ms. Server Running: http://localhost:8081
+----
+
+Login to get the access token:
+
+[source, bash]
+----
+$ curl -X "POST" "http://localhost:8080/login" -H 'Content-Type: application/json; charset=utf-8' -d $'{"username": "sherlock","password": "password"}'
+
+{"username":"sherlock","access_token":"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaGVybG9jayIsIm5iZiI6MTU3NTY0MTE4Nywicm9sZXMiOltdLCJpc3MiOiJnYXRld2F5IiwiZXhwIjoxNTc1NjQ0Nzg3LCJpYXQiOjE1NzU2NDExODd9.KeqG7XKB9RSEX4TncMCRVhikeMaFz3zzU9V190ioG3s","refresh_token":"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaGVybG9jayIsIm5iZiI6MTU3NTY0MTE4Nywicm9sZXMiOltdLCJpc3MiOiJnYXRld2F5IiwiaWF0IjoxNTc1NjQxMTg3fQ._lceQy-ujMQpPEkmrxvXeSnY_oNQsBnUvaglmLI569E","token_type":"Bearer","expires_in":3600}%
+----
+
+Use the access token to invoke `gateway` service `/user` endpoint. Token propagation will happen and we receive the username.
+
+[source, bash]
+----
+
+$ curl "http://localhost:8080/user" -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzaGVybG9jayIsIm5iZiI6MTU3NTY0MTE4Nywicm9sZXMiOltdLCJpc3MiOiJnYXRld2F5IiwiZXhwIjoxNTc1NjQ0Nzg3LCJpYXQiOjE1NzU2NDExODd9.KeqG7XKB9RSEX4TncMCRVhikeMaFz3zzU9V190ioG3s'
+
+sherlock
+----

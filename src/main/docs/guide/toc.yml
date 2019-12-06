@@ -9,5 +9,11 @@ writingTheApp:
   tokenPropagation: Token Propagation
 runningTheApp:
   title: Running the App
+graal:
+  title: Generate a Micronaut app's Native Image with GraalVM
+  graalchanges: Micronaut + GraalVM changes
+  graalnativeimage: Native Image generation
+  graalexecute: Execute Native Images
+  graaldocker: Native Image generation with Docker
 nextSteps:
   title: Next Steps
