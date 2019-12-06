@@ -2,6 +2,7 @@ package example.micronaut;
 
 import io.micronaut.http.HttpRequest;
 import io.micronaut.http.HttpStatus;
+import io.micronaut.http.client.HttpClient;
 import io.micronaut.http.client.RxHttpClient;
 import io.micronaut.http.client.annotation.Client;
 import io.micronaut.http.client.exceptions.HttpClientResponseException;
@@ -20,7 +21,7 @@ public class UserControllerTest {
 
     @Inject
     @Client("/")
-    RxHttpClient client;
+    HttpClient client;
 
     @Test
     public void testUserEndpointIsSecured() {
