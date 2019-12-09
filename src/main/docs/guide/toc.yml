@@ -17,3 +17,5 @@ graal:
   graaldocker: Native Image generation with Docker
 nextSteps:
   title: Next Steps
+help:
+  title: Help with Micronaut
