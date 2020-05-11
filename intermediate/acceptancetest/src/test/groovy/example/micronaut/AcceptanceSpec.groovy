@@ -38,7 +38,6 @@ class AcceptanceSpec extends Specification implements MicroserviceHealth {
         then:
         rsp.status() == HttpStatus.OK
         rsp.body().accessToken
-        rsp.body().refreshToken
         rsp.body().username
 
         String username = client.toBlocking().retrieve(HttpRequest.GET("/user")
