@@ -17,12 +17,9 @@ micronaut:
             generator:
               secret: pleaseChangeThisSecretForANewOne
       #tag::tokenpropagation[]
-      writer:
-        header:
-          enabled: true # <1>
       propagation:
-        enabled: true # <2>
-        service-id-regex: "userecho" # <3>
+        enabled: true # <1>
+        service-id-regex: "userecho" # <2>
       #end::tokenpropagation[]
   http:
     services:

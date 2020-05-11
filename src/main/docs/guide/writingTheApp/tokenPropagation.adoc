@@ -19,9 +19,8 @@ include::{sourceDir}/gateway/src/main/resources/application.yml[tag=tokenpropaga
 ..
 ----
 
-<1> Micronaut ships with several https://docs.micronaut.io/latest/api/io/micronaut/security/token/writer/TokenWriter.html[TokenWriter] beans which you can enable. In this example, we enable the HTTP header token writer which propagates the token in the HTTP Header `Authorization`. You can code your own `TokenWriter` to satisfy your requirements.
-<2> Enable token propagation
-<3> We only want to propagate the token to certain services. We can create a regular expression to match those services ids.
+<1> Enable token propagation
+<2> We only want to propagate the token to certain services. We can create a regular expression to match those services ids.
 
 We can simplify the code:
 
