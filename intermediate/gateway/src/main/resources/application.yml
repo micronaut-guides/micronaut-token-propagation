@@ -1,24 +1,30 @@
 micronaut:
   application:
     name: gateway
+---
+#tag::port[]
+micronaut:
   server:
-    port: 8080 # <1>
+    port: 8080
+#end::port[]
+#tag::security[]
+---
+micronaut:
   security:
-    enabled: true # <2>
-    endpoints:
-      login:
-        enabled: true # <3>
-      oauth:
-        enabled: true # <4>
+    authentication: bearer # <1>
     token:
       jwt:
-        enabled: true # <5>
         signatures:
           secret:
-            generator: # <6>
-              secret: pleaseChangeThisSecretForANewOne # <7>
+            generator: # <2>
+              secret: '"${JWT_GENERATOR_SIGNATURE_SECRET:pleaseChangeThisSecretForANewOne}"' # <3>
+#end::security[]
+#tag::httpservices[]
+---
+micronaut:
   http:
     services:
-      userecho: # <8>
+      userecho: # <1>
         urls:
-          - "http://localhost:8081" # <9>
+          - "http://localhost:8081" # <2>
+#end::httpservices[]

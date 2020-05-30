@@ -8,15 +8,7 @@ Let's configure token propagation. We need to modify `application.yml` in the `g
 [source,yaml]
 .gateway/src/main/resources/application.yml
 ----
-micronaut:
-  security:
-    token:
-    ...
-    ..
-    ..
 include::{sourceDir}/gateway/src/main/resources/application.yml[tag=tokenpropagation]
-....
-..
 ----
 
 <1> Enable token propagation
