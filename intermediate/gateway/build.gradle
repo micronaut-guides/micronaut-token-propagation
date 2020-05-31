@@ -16,14 +16,6 @@ repositories {
 configurations {
     // for dependencies that are needed for development only
     developmentOnly
-
-    all {
-        resolutionStrategy {
-            force 'io.micronaut:micronaut-security-annotations:2.0.0.BUILD-SNAPSHOT'
-            force 'io.micronaut:micronaut-security:2.0.0.BUILD-SNAPSHOT'
-            force 'io.micronaut:micronaut-security-jwt:2.0.0.BUILD-SNAPSHOT'
-        }
-    }
 }
 
 dependencies {
@@ -45,8 +37,8 @@ dependencies {
     implementation("io.micronaut:micronaut-http-client")
 
     //tag::security-jwt[]
-    annotationProcessor "io.micronaut:micronaut-security-annotations:2.0.0.BUILD-SNAPSHOT"
-    implementation "io.micronaut:micronaut-security-jwt:2.0.0.BUILD-SNAPSHOT"
+    annotationProcessor "io.micronaut:micronaut-security-annotations"
+    implementation "io.micronaut:micronaut-security-jwt"
     //end::security-jwt[]
 
     runtimeOnly("ch.qos.logback:logback-classic:1.2.3")
