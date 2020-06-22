@@ -33,9 +33,13 @@ dependencies {
     implementation("io.micronaut:micronaut-http-server-netty")
     implementation("io.micronaut:micronaut-http-client")
 
+    //tag::management[]
+    implementation("io.micronaut:micronaut-management")
+    //end::management[]
+
     //tag::security-jwt[]
-    annotationProcessor("io.micronaut:micronaut-security-annotations")
-    implementation("io.micronaut:micronaut-security-jwt")
+    annotationProcessor("io.micronaut.security:micronaut-security-annotations")
+    implementation("io.micronaut.security:micronaut-security-jwt")
     //end::security-jwt[]
     runtimeOnly("ch.qos.logback:logback-classic:1.2.3")
     testAnnotationProcessor(enforcedPlatform("io.micronaut:micronaut-bom:$micronautVersion"))

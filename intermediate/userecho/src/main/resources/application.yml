@@ -1,6 +1,10 @@
 micronaut:
   application:
     name: userecho
+---
+endpoints:
+  health:
+    enabled: true
 #tag::port[]
 ---
 micronaut:
@@ -14,7 +18,7 @@ micronaut:
     token:
       jwt:
         signatures:
-          secret: # <1>
-            validation:
-              secret: pleaseChangeThisSecretForANewOne # <2>
+          secret:
+            validation: # <2>
+              secret: '"${JWT_GENERATOR_SIGNATURE_SECRET:pleaseChangeThisSecretForANewOne}"' # <3>
 #end::security[]

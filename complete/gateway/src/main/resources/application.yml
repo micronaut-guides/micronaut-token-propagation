@@ -2,6 +2,10 @@ micronaut:
   application:
     name: gateway
 ---
+endpoints:
+  health:
+    enabled: true
+---
 #tag::port[]
 micronaut:
   server:

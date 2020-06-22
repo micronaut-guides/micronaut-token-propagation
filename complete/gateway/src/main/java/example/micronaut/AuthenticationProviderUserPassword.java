@@ -24,10 +24,10 @@ public class AuthenticationProviderUserPassword implements AuthenticationProvide
             if ((authenticationRequest.getIdentity().equals("sherlock") || authenticationRequest.getIdentity().equals("watson")) &&
                     authenticationRequest.getSecret().equals("password")) {
                 emitter.onNext(new UserDetails((String) authenticationRequest.getIdentity(), Collections.emptyList()));
+                emitter.onComplete();
             } else {
                 emitter.onError(new AuthenticationException(new AuthenticationFailed()));
             }
-            emitter.onComplete();
         }, BackpressureStrategy.ERROR);
 
     }

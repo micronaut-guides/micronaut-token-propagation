@@ -1,3 +1,5 @@
+include::{commondir}/common-micronautonex.adoc[]
+
 Lets describe the microservices you are going to build through the tutorial.
 
 * `gateway` - A secured via JWT microservice which exposes an endpoint `/user`. The output of that endpoint is the result of consuming the `userecho` endpoint.

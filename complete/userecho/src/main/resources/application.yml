@@ -1,10 +1,19 @@
 micronaut:
   application:
     name: userecho
+---
+endpoints:
+  health:
+    enabled: true
+#tag::port[]
+---
+micronaut:
   server:
     port: 8081
+#end::port[]
 ---
 #tag::security[]
+---
 micronaut:
   security:
     token:
