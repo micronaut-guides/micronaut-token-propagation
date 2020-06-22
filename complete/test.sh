@@ -17,6 +17,8 @@ echo "Starting services"
 
 echo "Waiting 5 seconds for gateway to start"
 
+sleep 5
+
 ./gradlew :acceptancetest:test --rerun-tasks --console=plain || EXIT_STATUS=$?
 
 killall -9 java
